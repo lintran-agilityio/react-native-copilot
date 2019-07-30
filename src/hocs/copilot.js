@@ -182,6 +182,7 @@ const copilot = ({
               next={this.next}
               prev={this.prev}
               stop={this.stop}
+              screen={this.props.navigation.state.routeName} // Pass current screen name
               visible={this.state.visible}
               isFirstStep={this.isFirstStep()}
               isLastStep={this.isLastStep()}

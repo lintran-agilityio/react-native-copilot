@@ -5,6 +5,7 @@ import {
   Animated,
   Easing,
   Dimensions,
+  Platform
 } from 'react-native';
 // import { Svg } from 'expo';
 import Svg from 'react-native-svg';
@@ -50,6 +51,7 @@ class SvgMask extends Component<Props, State> {
     };
 
     this.state.position.addListener(this.animationListener);
+    this.isAndroid = Platform.OS === 'android'
   }
 
   componentWillReceiveProps(nextProps) {
@@ -57,7 +59,8 @@ class SvgMask extends Component<Props, State> {
     
     // Check tab at ProgramDetail screen 
     const isTabProgram = screen === 'ProgramDetailScreen' && size.y <= 5
-    const positionY = isTabProgram ? position.y + 7 : position.y
+    const offsetAnrdoid = this.isAndroid ? 26 : 0
+    const positionY = (isTabProgram ? position.y + 7 : position.y) + offsetAnrdoid
     
     // Hidden View with height === 4 (real style is 0)
     const isHidenHighlight = size.y === 4

@@ -66,12 +66,15 @@ class ConnectedCopilotStep extends Component<Props> {
       const measure = () => {
         // Wait until the wrapper element appears
         if (this.wrapper && this.wrapper.measure) {
-          this.wrapper.measure(
-            (ox, oy, width, height, x, y) => resolve({
-              x, y, width, height,
-            }),
-            reject,
-          );
+          // Wait until scroll finished
+          setTimeout(() => {
+            this.wrapper.measure(
+              (ox, oy, width, height, x, y) => resolve({
+                x, y, width, height,
+              }),
+              reject,
+            );
+          }, 200)
         } else {
           requestAnimationFrame(measure);
         }

@@ -1,5 +1,5 @@
 // @flow
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 export const STEP_NUMBER_RADIUS: number = 14;
 export const STEP_NUMBER_DIAMETER: number = STEP_NUMBER_RADIUS * 2;
@@ -7,6 +7,10 @@ export const ZINDEX: number = 100;
 export const MARGIN: number = 13;
 export const OFFSET_WIDTH: number = 4;
 export const ARROW_SIZE: number = 6;
+
+const { width, height } = Dimensions.get('window');
+const screenWidth = width < height ? width : height;
+const screenHeight = width < height ? height : width;
 
 export default StyleSheet.create({
   container: {
@@ -17,17 +21,14 @@ export default StyleSheet.create({
     bottom: 0,
     zIndex: ZINDEX,
   },
-  arrow: {
-    position: 'absolute',
-    borderColor: 'transparent',
-    borderWidth: ARROW_SIZE,
-  },
+  arrow: {},
   tooltip: {
+    width: screenWidth,
+    height: screenHeight,
+    maxWidth: screenWidth,
     position: 'absolute',
-    paddingTop: 15,
-    paddingHorizontal: 15,
-    backgroundColor: '#fff',
-    borderRadius: 3,
+    top: 0,
+    left: 0,
     overflow: 'hidden',
   },
   tooltipText: {

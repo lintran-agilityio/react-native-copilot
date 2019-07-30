@@ -58,7 +58,9 @@ class SvgMask extends Component<Props, State> {
     // Check tab at ProgramDetail screen 
     const isTabProgram = screen === 'ProgramDetailScreen' && size.y <= 5
     const positionY = isTabProgram ? position.y + 7 : position.y
-    const isHidenHighlight = screen === 'ProgramDetailScreen' && size.y === 6
+    
+    // Hidden View with height === 6 (real style is 2)
+    const isHidenHighlight = size.y === 6
     const y = isTabProgram ? 50 : isHidenHighlight ? 0 : size.y
     if (this.props.position !== nextProps.position || this.props.size !== nextProps.size) {
       this.animate({ ...nextProps.size, y }, { ...nextProps.position, y: positionY })

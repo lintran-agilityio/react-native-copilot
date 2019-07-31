@@ -55,18 +55,25 @@ class SvgMask extends Component<Props, State> {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { size, screen, position } = nextProps
-    
-    // Check tab at ProgramDetail screen 
-    const isTabProgram = screen === 'ProgramDetailScreen' && size.y <= 5
-    const offsetAnrdoid = this.isAndroid ? 26 : 0
-    const positionY = (isTabProgram ? position.y + 7 : position.y) + offsetAnrdoid
-    
+    const { size, screen, position, currentStepNumber } = nextProps
+
+    // Check tab at ProgramDetail screen
+    const isTabProgramAtDetail = screen === 'ProgramDetailScreen' && size.y === 5
+    const offsetAnrdoid =
+      this.isAndroid && screen === 'DiscoverScreen' && currentStepNumber === 3 ? 16 : this.isAndroid ? 27 : 0
+    const positionY = (isTabProgramAtDetail ? position.y + 7 : position.y) + offsetAnrdoid
+
+    // Check tab at DiscoverScreen
+    const isTabProgramAtHome = screen === 'DiscoverScreen' && currentStepNumber === 1
+    const isTabDiscoverAtHome = screen === 'DiscoverScreen' && currentStepNumber === 2
+
     // Hidden View with height === 4 (real style is 0)
     const isHidenHighlight = size.y === 4
-    const y = isTabProgram ? 50 : isHidenHighlight ? 0 : size.y
+    const y = isTabProgramAtDetail || isTabProgramAtHome || isTabDiscoverAtHome ? 50 : isHidenHighlight ? 0 : size.y
+    const x = isTabProgramAtHome || isTabDiscoverAtHome ? windowDimensions.width / 2 : size.x
+    const positionX = isTabDiscoverAtHome ? screenWidth / 2 : position.x
     if (this.props.position !== nextProps.position || this.props.size !== nextProps.size) {
-      this.animate({ ...nextProps.size, y }, { ...nextProps.position, y: positionY })
+      this.animate({ x, y }, { x: positionX, y: positionY })
     }
   }
 

@@ -24,7 +24,7 @@ export default StyleSheet.create({
   arrow: {},
   tooltip: {
     width: screenWidth,
-    height: screenHeight,
+    height: '100%',
     maxWidth: screenWidth,
     position: 'absolute',
     top: 0,

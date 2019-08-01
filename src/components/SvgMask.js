@@ -15,6 +15,8 @@ import type { valueXY } from '../types';
 
 const windowDimensions = Dimensions.get('window');
 const path = (size, position, canvasSize): string => `M0,0H${canvasSize.x}V${canvasSize.y}H0V0ZM${position.x._value},${position.y._value}H${position.x._value + size.x._value}V${position.y._value + size.y._value}H${position.x._value}V${position.y._value}Z`;
+const screenWidth = windowDimensions.width
+const screenHeight = windowDimensions.height
 
 type Props = {
   size: valueXY,

@@ -142,7 +142,9 @@ const copilot = ({
 
         if (!currentStep) {
           this.startTries += 1;
-          requestAnimationFrame(() => this.start(fromStep));
+          // Start tutorial Immediatly
+          setImmediate(() => this.start(fromStep));
+          //requestAnimationFrame(() => this.start(fromStep));
         } else {
           this.eventEmitter.emit('start');
           await this.setCurrentStep(currentStep);

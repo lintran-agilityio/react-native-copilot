@@ -48,7 +48,7 @@ class SvgMask extends Component<Props, State> {
         x: windowDimensions.width,
         y: windowDimensions.height,
       },
-      size: new Animated.ValueXY(props.size),
+      size: new Animated.ValueXY({ ...props.size, x: 0, y: 0 }),
       position: new Animated.ValueXY(props.position),
     };
 

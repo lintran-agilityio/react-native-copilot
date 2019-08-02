@@ -141,6 +141,7 @@ const copilot = ({
         }
 
         if (!currentStep) {
+          const { routeName } = this.props.navigation.state
           this.startTries += 1;
           // Start tutorial Immediatly
           routeName.toLowerCase().includes('plan')

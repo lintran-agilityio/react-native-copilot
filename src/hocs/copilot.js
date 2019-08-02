@@ -143,7 +143,9 @@ const copilot = ({
         if (!currentStep) {
           this.startTries += 1;
           // Start tutorial Immediatly
-          setImmediate(() => this.start(fromStep));
+          routeName.toLowerCase().includes('plan')
+          ? requestAnimationFrame(() => this.start(fromStep))
+          : setImmediate(() => this.start(fromStep))
           //requestAnimationFrame(() => this.start(fromStep));
         } else {
           this.eventEmitter.emit('start');

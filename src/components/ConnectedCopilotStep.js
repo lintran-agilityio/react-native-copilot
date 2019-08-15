@@ -74,7 +74,7 @@ class ConnectedCopilotStep extends Component<Props> {
               }),
               reject,
             );
-          }, 300)
+          }, 500)
         } else {
           requestAnimationFrame(measure);
         }

@@ -45,10 +45,10 @@ class SvgMask extends Component<Props, State> {
 
     this.state = {
       canvasSize: {
-        x: windowDimensions.width,
-        y: windowDimensions.height,
+        x: screenWidth,
+        y: screenHeight,
       },
-      size: new Animated.ValueXY({ ...props.size, x: 0, y: 0 }),
+      size: new Animated.ValueXY({ ...props.size, x: screenWidth / 2 }),
       position: new Animated.ValueXY(props.position),
     };
 
@@ -81,7 +81,7 @@ class SvgMask extends Component<Props, State> {
         ? 0
         : size.y
     const x = isTabProgramAtHome || isTabDiscoverAtHome
-        ? windowDimensions.width / 2
+        ? screenWidth / 2
         : size.x
     const positionX = (isTabDiscoverAtHome ? screenWidth / 2 : position.x) + offsetAnrdoidX
     if (

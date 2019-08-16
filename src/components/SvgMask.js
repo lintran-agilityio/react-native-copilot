@@ -49,7 +49,7 @@ class SvgMask extends Component<Props, State> {
         y: screenHeight,
       },
       size: new Animated.ValueXY({ ...props.size, x: screenWidth / 2 }),
-      position: new Animated.ValueXY({ ...props.position, x: 0 }),
+      position: new Animated.ValueXY({ ...props.position, x: Platform.isPad ? -7 : 0 }),
     };
 
     this.state.position.addListener(this.animationListener);

@@ -65,11 +65,11 @@ class SvgMask extends Component<Props, State> {
     // Check tab at ProgramDetail screen
     const isTabProgramAtDetail =
       screen === 'ProgramDetailScreen' && currentStepNumber === 3
-    const offsetAnrdoid = this.isAndroid && screen === 'DiscoverScreen' && currentStepNumber === 3
+    const offsetAnrdoid = this.isAndroid
+      ? screen === 'DiscoverScreen' && currentStepNumber === 3
         ? 16
-        : this.isAndroid && screen !== 'WorkoutVideoDetailScreen'
-        ? 27
-        : 22
+        : 27
+      : 0
     const offsetAnrdoidX = this.isAndroid && screen === 'PlanProgressScreen' && 0
     const positionY = (isTabProgramAtDetail ? position.y + 7 : position.y) + offsetAnrdoid
 

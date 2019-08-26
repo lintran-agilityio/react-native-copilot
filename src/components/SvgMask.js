@@ -63,41 +63,30 @@ class SvgMask extends Component<Props, State> {
     const { size, screen, position, currentStepNumber } = nextProps
 
     // Check tab at ProgramDetail screen
-    const isTabProgramAtDetail =
-      screen === 'ProgramDetailScreen' && size.y === 5
-    const offsetAnrdoid = this.isAndroid
-      ? screen === 'DiscoverScreen' && currentStepNumber === 3
+    const isTabProgramAtDetail = screen === 'ProgramDetailScreen' && size.y === 5
+    const offsetAnrdoid = this.isAndroid && screen === 'DiscoverScreen' && currentStepNumber === 3
         ? 16
-        : 27
-      : 0
-    // ? 16
-    // : 27
-    // : this.isAndroid && screen !== 'WorkoutVideoDetailScreen'
-    // ? 27
-    // : 0
-    // const offsetAnrdoidX = this.isAndroid && screen === 'PlanProgressScreen' ? -20 : 0
-    const offsetAnrdoidX = 0
-    const positionY =
-      (isTabProgramAtDetail ? position.y + 7 : position.y) + offsetAnrdoid
+        : this.isAndroid && screen !== 'WorkoutVideoDetailScreen'
+        ? 27
+        : 0
+    const offsetAnrdoidX = this.isAndroid && screen === 'PlanProgressScreen' ? -20 : 0
+    const positionY = (isTabProgramAtDetail ? position.y + 7 : position.y) + offsetAnrdoid
 
     // Check tab at DiscoverScreen
-    const isTabProgramAtHome =
-      screen === 'DiscoverScreen' && currentStepNumber === 1
-    const isTabDiscoverAtHome =
-      screen === 'DiscoverScreen' && currentStepNumber === 2
+    const isTabProgramAtHome = screen === 'DiscoverScreen' && currentStepNumber === 1
+    const isTabDiscoverAtHome = screen === 'DiscoverScreen' && currentStepNumber === 2
 
     // Hidden View with height === 4 (real style is 0)
     const isHidenHighlight = size.y === 4
-    const y =
-      isTabProgramAtDetail || isTabProgramAtHome || isTabDiscoverAtHome
+    const y = isTabProgramAtDetail || isTabProgramAtHome || isTabDiscoverAtHome
         ? 50
         : isHidenHighlight
         ? 0
         : size.y
-    const x =
-      isTabProgramAtHome || isTabDiscoverAtHome ? screenWidth / 2 : size.x
-    const positionX =
-      (isTabDiscoverAtHome ? screenWidth / 2 : position.x) + offsetAnrdoidX
+    const x = isTabProgramAtHome || isTabDiscoverAtHome
+        ? screenWidth / 2
+        : size.x
+    const positionX = (isTabDiscoverAtHome ? screenWidth / 2 : position.x) + offsetAnrdoidX
     if (
       this.props.position !== nextProps.position ||
       this.props.size !== nextProps.size

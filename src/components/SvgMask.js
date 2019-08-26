@@ -70,7 +70,7 @@ class SvgMask extends Component<Props, State> {
         ? 16
         : 27
       : 0
-    const offsetAnrdoidX = this.isAndroid && screen === 'PlanProgressScreen' && 0
+    const offsetAnrdoidX = 0
     const positionY = (isTabProgramAtDetail ? position.y + 7 : position.y) + offsetAnrdoid
 
     // Check tab at DiscoverScreen
